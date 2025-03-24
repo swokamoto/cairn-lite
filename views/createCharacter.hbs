@@ -1,0 +1,13 @@
+{{!-- This form is used to create a new character --}}
+<h3>Create New Character</h3>
+<form id="createCharacter" action="/createCharacter" method="POST">
+    <label for="characterName">Character Name:</label>
+    <input type="text" id="characterName" name="characterName" required>
+    <label for="job">Job:</label>
+    <select id="job" name="job">
+        <option value="cutpurse">Cutpurse</option>
+        <option value="fletchwind">Fletchwind</option>
+        <option value="mountebank">Mountebank</option>
+    </select>
+    <button type="submit">Create Character</button>
+</form>

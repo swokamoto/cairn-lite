@@ -1,9 +1,23 @@
 import db from '../db.js';
 
 export function dashBoard(req, res) {
-    //builds the html for the dashboard page, for the user to see their stats and other information
-    // only for the player that is logged in, not for the admin or other users
-    const query = `SELECT * FROM users WHERE id = ?`;
-    const user = db.prepare(query).get(req.session.userId);
-    res.json({user: user});
+    const userId = req.session.userId;
+
+    try {
+        const query = `SELECT * FROM characters WHERE user_id = ?`;
+        const result = db.prepare(query).all(userId);
+
+        if (result.length === 0) {
+            console.log(req.session);
+            res.render('createCharacter');
+        } else {
+            // get characterName and job from result
+            const { name, job } = result[0];
+            console.log("dashboard:", name, job);
+            res.render('dashboard', { characterName: name , job });
+        }
+    } catch (e) {
+        console.error(e);
+        res.status(500).send('Internal Server Error');
+    }
 }
