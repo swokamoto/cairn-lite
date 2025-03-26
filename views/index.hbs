@@ -1,11 +1,14 @@
-<h2>{{title}}</h2>
-<form id="login-user" action="/loginUser" method="POST">
-  <label for="username">Username:</label>
-  <input type="text" id="username" name="username" required>
-  <button type="submit">Login</button>
-</form>
-<form id="create-user" action="/createUser" method="POST">
-  <label for="new-username">New Username:</label>
-  <input type="text" id="new-username" name="new-username" required>
-  <button type="submit">Create</button>
-</form>
+<section id="loginPanel">
+  <h2>{{title}}</h2>
+  <form id="loginUser" action="/loginUser" method="POST">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <button type="submit">Login</button>
+  </form>
+  <form id="createUser" hx-post="/createUser" hx-target="#createUserMessage" hx-swap="innerHTML">
+    <label for="newUsername">New Username:</label>
+    <input type="text" id="newUsername" name="newUsername" required>
+    <button type="submit">Create</button>
+  </form>
+  <div id="createUserMessage"></div>
+</section>

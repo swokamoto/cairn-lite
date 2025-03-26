@@ -21,3 +21,32 @@ export function dashBoard(req, res) {
         res.status(500).send('Internal Server Error');
     }
 }
+
+export function showInventory(req, res) {
+    const userId = req.session.userId;
+    try {
+        const query = `SELECT * FROM inventory WHERE user_id = ?`;
+        const result = db.prepare(query).all(userId);
+        res.render('inventory', { inventory: result });
+    } catch (e) {
+        console.error(e);
+        res.status(500).send('Internal Server Error');
+    }
+}
+
+export function showQuests(req, res) {
+    const userId = req.session.userId;
+    try {
+        const query = `SELECT * FROM quests WHERE user_id = ?`;
+        const result = db.prepare(query).all(userId);
+        res.render('quests', { quests: result });
+    } catch (e) {
+        console.error(e);
+        res.status(500).send('Internal Server Error');
+    }
+}
+
+export function showClan(req, res) {
+    const userId = req.session.userId;
+    
+}

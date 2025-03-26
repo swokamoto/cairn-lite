@@ -1,3 +1,12 @@
-<h2>{{characterName}}</h2>
-<h3>{{job}}</h3>
+<section id="mainPanel">
+    <h2>Welcome {{characterName}}, the {{job}}</h2>
+    <p>Here you can manage your inventory, quests, and clan.</p>
+    <p>What would you like to do?</p>
+</section>
+
+<nav id="dashboardNav">
+    <button id="showInventory" hx-get="/showInventory" hx-target="#mainPanel">Inventory</button>
+    <button id="showQuests" hx-get="/showQuests" hx-target="#mainPanel">Quests</button>
+    <button id="showClan" hx-get="/showClan" hx-target="#mainPanel">Clan</button>
+</nav>
 

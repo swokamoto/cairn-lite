@@ -1,0 +1,44 @@
+/* Base styles for #mainPanel */
+#mainPanel, #loginPanel, #createPanel {
+    background-color: #479744;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px auto; /* Center the panel horizontally */
+    max-width: 90%; /* Default width for smaller screens */
+    width: 100%; /* Ensure it doesn't exceed the container width */
+    height: 70vh; /* Full height of the viewport */
+    box-sizing: border-box; /* Include padding and border in the element's width/height */
+}
+
+/* Styles for tablets (min-width: 600px) */
+@media (min-width: 600px) {
+    #mainPanel, #loginPanel, #createPanel {
+        max-width: 80%; /* Slightly larger for tablets */
+    }
+}
+
+/* Styles for desktops (min-width: 1024px) */
+@media (min-width: 1024px) {
+    #mainPanel, #loginPanel, #createPanel {
+        max-width: 60%; /* Larger width for desktops */
+    }
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+}
+
+footer {
+    height: 5vh;
+}
+
+#dashboardNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+}
