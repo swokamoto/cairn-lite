@@ -14,7 +14,7 @@ router.post('/createCharacter',     (req, res) => { createCharacter(req, res);  
 router.get('/home',                 (req, res) => { homePage(req, res);         });
 
 router.get('/dashboard',            (req, res) => { dashBoard(req, res);        });
-router.get('/dashboard/inventory',  (req, res) => { showInventory(req, res);    });
+router.get('/showInventory',  (req, res) => { showInventory(req, res);    });
 router.get('/dashboard/quests',     (req, res) => { showQuests(req, res);       });
 router.get('/dashboard/clan',       (req, res) => { showClan(req, res);         });
 
