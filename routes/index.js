@@ -2,7 +2,7 @@ import express from 'express';
 import { createUser, loginUser, createCharacter } from './login.js';
 import { startBattle } from './battle.js';
 import { homePage } from './home.js';
-import { dashBoard, showInventory, showQuests, showClan } from './dashboard.js';
+import { dashBoard, showCharacter, showInventory, showQuests, showClan } from './dashboard.js';
 
 const router = express.Router();
 
@@ -14,7 +14,8 @@ router.post('/createCharacter',     (req, res) => { createCharacter(req, res);  
 router.get('/home',                 (req, res) => { homePage(req, res);         });
 
 router.get('/dashboard',            (req, res) => { dashBoard(req, res);        });
-router.get('/showInventory',  (req, res) => { showInventory(req, res);    });
+router.get('/showCharacter',        (req, res) => { showCharacter(req, res);    });
+router.get('/showInventory',        (req, res) => { showInventory(req, res);    });
 router.get('/dashboard/quests',     (req, res) => { showQuests(req, res);       });
 router.get('/dashboard/clan',       (req, res) => { showClan(req, res);         });
 

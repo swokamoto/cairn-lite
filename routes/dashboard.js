@@ -22,6 +22,19 @@ export function dashBoard(req, res) {
     }
 }
 
+export function showCharacter(req, res) {
+    const userId = req.session.userId;
+    try {
+        const query = `SELECT * FROM characters WHERE user_id = ?`;
+        const result = db.prepare(query).all(userId);
+        console.log("result:", result);
+        res.render('partials/character', { ...result[0] });
+    } catch (e) {
+        console.error(e);
+        res.status(500).send('Internal Server Error');
+    }
+}
+
 export function showInventory(req, res) {
     const userId = req.session.userId;
     try {
@@ -39,23 +52,10 @@ export function showInventory(req, res) {
                 `;
             const result = db.prepare(query).all(userId);
             console.log(result);
-            // Building the HTML manually
-            let inventoryHtml = '<h1>Your Inventory</h1>';
-            result.forEach(item => {
-                inventoryHtml += `
-                    <div class="inventory-item">
-                        <h3>${item.name}</h3>
-                        <p><strong>Type:</strong> ${item.type}</p>
-                        <p><strong>Weight:</strong> ${item.weight}</p>
-                        ${item.damage_range ? `<p><strong>Damage:</strong> ${item.damage_range}</p>` : ''}
-                        ${item.armor_value ? `<p><strong>Armor Value:</strong> ${item.armor_value}</p>` : ''}
-                        ${item.effect ? `<p><strong>Effect:</strong> ${item.effect}</p>` : ''}
-                    </div>
-                `;
-            });
+            
 
             // Send the generated HTML back
-            res.send(inventoryHtml);
+            res.render('partials/Inventory', { items: result });
         } else {
             // If no character found for this user
             res.render('inventory', { inventory: [] });

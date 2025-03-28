@@ -5,8 +5,10 @@
 </section>
 
 <nav id="dashboardNav">
-    <button id="showInventory" hx-get="/showInventory" hx-target="#mainPanel">Inventory</button>
+    <button id="showCharacter" hx-get="/showCharacter" hx-select="#characterPanel" hx-target="#mainPanel">Character</button>
+    <button id="showInventory" hx-get="/showInventory" hx-select="#inventoryPanel" hx-target="#mainPanel">Inventory</button>
     <button id="showQuests" hx-get="/showQuests" hx-target="#mainPanel">Quests</button>
     <button id="showClan" hx-get="/showClan" hx-target="#mainPanel">Clan</button>
 </nav>
 
+ 
